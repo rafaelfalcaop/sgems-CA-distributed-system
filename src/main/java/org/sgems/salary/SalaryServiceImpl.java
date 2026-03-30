@@ -27,4 +27,37 @@ public class SalaryServiceImpl extends SalaryMonitoringServiceGrpc.SalaryMonitor
 
         System.out.println("Processed pay gap for dept: " + department + " year: " + year);
     }
+    
+    @Override
+    public StreamObserver<SalaryRecord> uploadSalaryRecords(StreamObserver<UploadStatus> responseObserver) {
+
+    return new StreamObserver<SalaryRecord>() {
+
+        int count = 0;
+
+        @Override
+        public void onNext(SalaryRecord record) {
+            count++;
+            System.out.println("Received record: " + record.getEmployeeId());
+        }
+
+        @Override
+        public void onError(Throwable t) {
+            System.out.println("Error receiving salary records");
+        }
+
+        @Override
+        public void onCompleted() {
+
+            UploadStatus response = UploadStatus.newBuilder()
+                    .setStatus("Received " + count + " records")
+                    .build();
+
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+
+            System.out.println("Finished receiving salary records");
+        }
+    };
+}
 }
