@@ -1,3 +1,4 @@
+org/sgems/leadership/LeadershipRepresentationServiceImpl$1.class
 org/sgems/reporting/DiscriminationReportingServiceGrpc$DiscriminationReportingServiceMethodDescriptorSupplier.class
 org/sgems/salary/SalaryStatsRequest$1.class
 org/sgems/salary/PayGapRequest$Builder.class
@@ -30,6 +31,7 @@ org/sgems/leadership/RepresentationRequest$1.class
 org/sgems/salary/PayGapRequestOrBuilder.class
 org/sgems/salary/SalaryServiceImpl$1.class
 org/sgems/leadership/LeadershipRepresentationServiceGrpc$LeadershipRepresentationServiceImplBase.class
+org/sgems/leadership/LeadershipRepresentationServiceImpl.class
 org/sgems/salary/SalaryMonitoringServiceGrpc$MethodHandlers.class
 org/sgems/salary/UploadStatus$Builder.class
 org/sgems/reporting/IncidentRequestOrBuilder.class
@@ -44,6 +46,7 @@ org/sgems/salary/SalaryMonitoringServiceGrpc$SalaryMonitoringServiceFileDescript
 org/sgems/reporting/DiscriminationReportingServiceGrpc$MethodHandlers.class
 org/sgems/reporting/LiveMessage.class
 org/sgems/salary/SalaryMonitoringServiceGrpc$SalaryMonitoringServiceStub.class
+org/sgems/leadership/LeadershipServer.class
 org/sgems/leadership/LeadershipRepresentationServiceGrpc$LeadershipRepresentationServiceFutureStub.class
 org/sgems/reporting/DiscriminationReportingProto.class
 org/sgems/reporting/IncidentUpdate.class
