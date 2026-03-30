@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.sgems.leadership";
+option java_outer_classname = "LeadershipRepresentationProto";
+
+service LeadershipRepresentationService {
+
+  rpc GetRepresentationStats (RepresentationRequest) returns (RepresentationResponse);
+
+  rpc UploadLeadershipData (stream LeaderData) returns (UploadResponse);
+
+  rpc StreamRepresentationChanges (RepresentationRequest) returns (stream RepresentationChange);
+
+}
+
+message RepresentationRequest {
+  string organizationId = 1;
+}
+
+message RepresentationResponse {
+  int32 totalLeaders = 1;
+  int32 femaleLeaders = 2;
+  int32 maleLeaders = 3;
+  int32 nonBinaryLeaders = 4;
+  double representationPercentage = 5;
+}
+
+message LeaderData {
+  string leaderId = 1;
+  string gender = 2;
+  string position = 3;
+}
+
+message UploadResponse {
+  string uploadStatus = 1;
+}
+
+message RepresentationChange {
+  string changeDescription = 1;
+  double updatedPercentage = 2;
+}

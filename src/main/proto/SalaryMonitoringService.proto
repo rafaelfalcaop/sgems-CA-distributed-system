@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.sgems.salary";
+option java_outer_classname = "SalaryMonitoringProto";
+
+service SalaryMonitoringService {
+
+  rpc CalculatePayGap (PayGapRequest) returns (PayGapResponse);
+
+  rpc StreamSalaryStatistics (SalaryStatsRequest) returns (stream SalaryStatsResponse);
+
+  rpc UploadSalaryRecords (stream SalaryRecord) returns (UploadStatus);
+}
+
+message PayGapRequest {
+  string departmentId = 1;
+  int32 year = 2;
+}
+
+message PayGapResponse {
+  double averageMaleSalary = 1;
+  double averageFemaleSalary = 2;
+  double payGapPercentage = 3;
+}
+
+message SalaryStatsRequest {
+  string departmentId = 1;
+}
+
+message SalaryStatsResponse {
+  string month = 1;
+  double averageSalary = 2;
+  string gender = 3;
+}
+
+message SalaryRecord {
+  string employeeId = 1;
+  string gender = 2;
+  double salary = 3;
+}
+
+message UploadStatus {
+  string status = 1;
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.sgems.reporting";
+option java_outer_classname = "DiscriminationReportingProto";
+
+service DiscriminationReportingService {
+
+  rpc SubmitIncidentReport (IncidentRequest) returns (IncidentResponse);
+
+  rpc GetIncidentUpdates (IncidentUpdateRequest) returns (stream IncidentUpdate);
+
+  rpc LiveCaseCommunication (stream LiveMessage) returns (stream LiveMessage);
+
+}
+
+message IncidentRequest {
+  string reportId = 1;
+  string description = 2;
+  string reporterGender = 3;
+  string timestamp = 4;
+}
+
+message IncidentResponse {
+  string status = 1;
+  string assignedOfficer = 2;
+}
+
+message IncidentUpdateRequest {
+  string reportId = 1;
+}
+
+message IncidentUpdate {
+  string updateMessage = 1;
+  string updateTimestamp = 2;
+}
+
+message LiveMessage {
+  string message = 1;
+  string role = 2;
+}
