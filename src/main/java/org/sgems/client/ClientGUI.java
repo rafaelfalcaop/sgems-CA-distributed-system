@@ -31,6 +31,9 @@ public class ClientGUI {
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        JLabel salaryLabel = new JLabel("Salary Service");
+        salaryLabel.setBounds(20, 10, 200, 20);
+
         JTextField deptField = new JTextField();
         deptField.setBounds(20, 30, 200, 25);
 
@@ -40,11 +43,17 @@ public class ClientGUI {
         JButton salaryBtn = new JButton("Calculate Pay Gap");
         salaryBtn.setBounds(20, 90, 200, 25);
 
+        JLabel reportLabel = new JLabel("Reporting Service");
+        reportLabel.setBounds(20, 130, 200, 20);
+
         JTextField reportIdField = new JTextField();
         reportIdField.setBounds(20, 150, 200, 25);
 
         JButton reportBtn = new JButton("Submit Report");
         reportBtn.setBounds(20, 180, 200, 25);
+
+        JLabel leaderLabel = new JLabel("Leadership Service");
+        leaderLabel.setBounds(20, 220, 200, 20);
 
         JTextField orgField = new JTextField();
         orgField.setBounds(20, 240, 200, 25);
@@ -101,13 +110,16 @@ public class ClientGUI {
             }
         });
 
+        frame.add(salaryLabel);
         frame.add(deptField);
         frame.add(yearField);
         frame.add(salaryBtn);
 
+        frame.add(reportLabel);
         frame.add(reportIdField);
         frame.add(reportBtn);
 
+        frame.add(leaderLabel);
         frame.add(orgField);
         frame.add(leaderBtn);
 

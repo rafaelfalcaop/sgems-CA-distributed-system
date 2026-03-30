@@ -38,7 +38,6 @@ org/sgems/reporting/IncidentRequestOrBuilder.class
 org/sgems/leadership/LeaderData$1.class
 org/sgems/reporting/DiscriminationReportingServiceGrpc$DiscriminationReportingServiceBlockingStub.class
 org/sgems/salary/SalaryRecordOrBuilder.class
-org/sgems/client/ClientGUI$1.class
 org/sgems/salary/PayGapResponse$1.class
 org/sgems/leadership/LeadershipRepresentationServiceGrpc$1.class
 org/sgems/reporting/IncidentUpdate$1.class
