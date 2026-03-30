@@ -59,7 +59,7 @@ public class ClientGUI {
 
         JButton streamBtn = new JButton("Stream Salary Stats");
         streamBtn.setBounds(180, 120, 170, 25);
-        
+
         // ===== REPORTING =====
         JLabel reportTitle = new JLabel("Discrimination Reporting Service");
         reportTitle.setBounds(20, 170, 300, 20);
@@ -114,17 +114,30 @@ public class ClientGUI {
 
         // ===== ACTIONS =====
 
+        // SALARY - PAY GAP
         payGapBtn.addActionListener(e -> {
             try {
 
-                if (yearField.getText().isEmpty()) {
-                    output.setText("Please enter a valid year");
+                String dept = deptField.getText();
+                String yearText = yearField.getText();
+
+                if (dept.isEmpty() || yearText.isEmpty()) {
+                    output.setText("Please fill all fields (Department and Year)");
+                    return;
+                }
+
+                int year;
+
+                try {
+                    year = Integer.parseInt(yearText);
+                } catch (NumberFormatException ex) {
+                    output.setText("Year must be a valid number");
                     return;
                 }
 
                 PayGapRequest req = PayGapRequest.newBuilder()
-                        .setDepartmentId(deptField.getText())
-                        .setYear(Integer.parseInt(yearField.getText()))
+                        .setDepartmentId(dept)
+                        .setYear(year)
                         .build();
 
                 PayGapResponse res = salaryStub.calculatePayGap(req);
@@ -136,10 +149,11 @@ public class ClientGUI {
                 );
 
             } catch (Exception ex) {
-                output.setText("Error: invalid input");
+                output.setText("Error processing request");
             }
         });
 
+        // SALARY - STREAM
         streamBtn.addActionListener(e -> {
 
             output.setText("");
@@ -167,8 +181,18 @@ public class ClientGUI {
             });
         });
 
+        // REPORTING
         reportBtn.addActionListener(e -> {
             try {
+
+                if (reportIdField.getText().isEmpty() ||
+                    descField.getText().isEmpty() ||
+                    genderField.getText().isEmpty()) {
+
+                    output.setText("Please fill all reporting fields");
+                    return;
+                }
+
                 IncidentRequest req = IncidentRequest.newBuilder()
                         .setReportId(reportIdField.getText())
                         .setDescription(descField.getText())
@@ -188,8 +212,15 @@ public class ClientGUI {
             }
         });
 
+        // LEADERSHIP
         leaderBtn.addActionListener(e -> {
             try {
+
+                if (orgField.getText().isEmpty()) {
+                    output.setText("Please enter organization ID");
+                    return;
+                }
+
                 RepresentationRequest req = RepresentationRequest.newBuilder()
                         .setOrganizationId(orgField.getText())
                         .build();
