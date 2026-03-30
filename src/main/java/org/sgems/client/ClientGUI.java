@@ -2,74 +2,89 @@ package org.sgems.client;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+
 import org.sgems.salary.*;
+import org.sgems.reporting.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ClientGUI {
 
     public static void main(String[] args) {
 
-        // conexão com SalaryService
-        ManagedChannel channel = ManagedChannelBuilder
-                .forAddress("localhost", 50051)
-                .usePlaintext()
-                .build();
+        ManagedChannel salaryChannel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
+        ManagedChannel reportingChannel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
 
-        SalaryMonitoringServiceGrpc.SalaryMonitoringServiceBlockingStub stub =
-                SalaryMonitoringServiceGrpc.newBlockingStub(channel);
+        SalaryMonitoringServiceGrpc.SalaryMonitoringServiceBlockingStub salaryStub =
+                SalaryMonitoringServiceGrpc.newBlockingStub(salaryChannel);
 
-        // GUI
+        DiscriminationReportingServiceGrpc.DiscriminationReportingServiceBlockingStub reportingStub =
+                DiscriminationReportingServiceGrpc.newBlockingStub(reportingChannel);
+
         JFrame frame = new JFrame("SGEMS Client");
-        frame.setSize(400, 300);
+        frame.setSize(500, 400);
+        frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JTextField departmentField = new JTextField();
+        JTextField deptField = new JTextField();
+        deptField.setBounds(20, 30, 200, 25);
+
         JTextField yearField = new JTextField();
-        JButton button = new JButton("Calculate Pay Gap");
-        JTextArea resultArea = new JTextArea();
+        yearField.setBounds(20, 60, 200, 25);
 
-        departmentField.setBounds(50, 30, 300, 30);
-        yearField.setBounds(50, 70, 300, 30);
-        button.setBounds(50, 110, 300, 30);
-        resultArea.setBounds(50, 150, 300, 80);
+        JButton salaryBtn = new JButton("Calculate Pay Gap");
+        salaryBtn.setBounds(20, 90, 200, 25);
 
-        frame.add(departmentField);
-        frame.add(yearField);
-        frame.add(button);
-        frame.add(resultArea);
+        JTextField reportIdField = new JTextField();
+        reportIdField.setBounds(20, 150, 200, 25);
 
-        frame.setLayout(null);
-        frame.setVisible(true);
+        JButton reportBtn = new JButton("Submit Report");
+        reportBtn.setBounds(20, 180, 200, 25);
 
-        // ação do botão
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        JTextArea output = new JTextArea();
+        output.setBounds(250, 30, 200, 250);
 
-                try {
-                    String dept = departmentField.getText();
-                    int year = Integer.parseInt(yearField.getText());
+        salaryBtn.addActionListener(e -> {
+            try {
+                PayGapRequest req = PayGapRequest.newBuilder()
+                        .setDepartmentId(deptField.getText())
+                        .setYear(Integer.parseInt(yearField.getText()))
+                        .build();
 
-                    PayGapRequest request = PayGapRequest.newBuilder()
-                            .setDepartmentId(dept)
-                            .setYear(year)
-                            .build();
+                PayGapResponse res = salaryStub.calculatePayGap(req);
+                output.setText("Gap: " + res.getPayGapPercentage());
 
-                    PayGapResponse response = stub.calculatePayGap(request);
-
-                    resultArea.setText(
-                            "Male Avg: " + response.getAverageMaleSalary() + "\n" +
-                            "Female Avg: " + response.getAverageFemaleSalary() + "\n" +
-                            "Gap: " + response.getPayGapPercentage() + "%"
-                    );
-
-                } catch (Exception ex) {
-                    resultArea.setText("Error: " + ex.getMessage());
-                }
+            } catch (Exception ex) {
+                output.setText("Error: " + ex.getMessage());
             }
         });
+
+        reportBtn.addActionListener(e -> {
+            try {
+                IncidentRequest req = IncidentRequest.newBuilder()
+                        .setReportId(reportIdField.getText())
+                        .setDescription("Test")
+                        .setReporterGender("Unknown")
+                        .setTimestamp(String.valueOf(System.currentTimeMillis()))
+                        .build();
+
+                IncidentResponse res = reportingStub.submitIncidentReport(req);
+                output.setText("Report: " + res.getStatus());
+
+            } catch (Exception ex) {
+                output.setText("Error: " + ex.getMessage());
+            }
+        });
+
+        frame.add(deptField);
+        frame.add(yearField);
+        frame.add(salaryBtn);
+
+        frame.add(reportIdField);
+        frame.add(reportBtn);
+
+        frame.add(output);
+
+        frame.setVisible(true);
     }
 }
