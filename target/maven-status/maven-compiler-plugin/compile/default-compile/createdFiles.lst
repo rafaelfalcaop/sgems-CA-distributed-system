@@ -2,6 +2,7 @@ org/sgems/reporting/DiscriminationReportingServiceGrpc$DiscriminationReportingSe
 org/sgems/salary/SalaryStatsRequest$1.class
 org/sgems/salary/PayGapRequest$Builder.class
 org/sgems/salary/SalaryServiceImpl.class
+org/sgems/reporting/DiscriminationReportingServiceImpl.class
 org/sgems/salary/PayGapResponseOrBuilder.class
 org/sgems/leadership/RepresentationChange$Builder.class
 org/sgems/reporting/IncidentResponse$1.class
@@ -27,6 +28,7 @@ org/sgems/leadership/RepresentationRequest.class
 org/sgems/salary/PayGapRequest$1.class
 org/sgems/leadership/RepresentationRequest$1.class
 org/sgems/salary/PayGapRequestOrBuilder.class
+org/sgems/salary/SalaryServiceImpl$1.class
 org/sgems/leadership/LeadershipRepresentationServiceGrpc$LeadershipRepresentationServiceImplBase.class
 org/sgems/salary/SalaryMonitoringServiceGrpc$MethodHandlers.class
 org/sgems/salary/UploadStatus$Builder.class
@@ -45,6 +47,7 @@ org/sgems/salary/SalaryMonitoringServiceGrpc$SalaryMonitoringServiceStub.class
 org/sgems/leadership/LeadershipRepresentationServiceGrpc$LeadershipRepresentationServiceFutureStub.class
 org/sgems/reporting/DiscriminationReportingProto.class
 org/sgems/reporting/IncidentUpdate.class
+org/sgems/reporting/DiscriminationReportingServiceImpl$1.class
 org/sgems/leadership/LeadershipRepresentationServiceGrpc$AsyncService.class
 org/sgems/salary/PayGapResponse.class
 org/sgems/leadership/LeadershipRepresentationServiceGrpc$LeadershipRepresentationServiceBaseDescriptorSupplier.class
@@ -105,6 +108,7 @@ org/sgems/leadership/LeadershipRepresentationProto.class
 org/sgems/salary/SalaryMonitoringServiceGrpc$SalaryMonitoringServiceBlockingStub.class
 org/sgems/leadership/RepresentationChange$1.class
 org/sgems/leadership/RepresentationResponse$1.class
+org/sgems/reporting/ReportingServer.class
 org/sgems/salary/SalaryMonitoringServiceGrpc$SalaryMonitoringServiceBaseDescriptorSupplier.class
 org/sgems/leadership/LeadershipRepresentationServiceGrpc$LeadershipRepresentationServiceBlockingStub.class
 org/sgems/reporting/DiscriminationReportingServiceGrpc$AsyncService.class

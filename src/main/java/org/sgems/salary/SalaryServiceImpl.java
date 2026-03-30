@@ -29,6 +29,29 @@ public class SalaryServiceImpl extends SalaryMonitoringServiceGrpc.SalaryMonitor
     }
     
     @Override
+    public void streamSalaryStatistics(SalaryStatsRequest request, StreamObserver<SalaryStatsResponse> responseObserver) {
+
+    String department = request.getDepartmentId();
+
+    String[] months = {"Jan", "Feb", "Mar"};
+
+    for (String month : months) {
+
+        SalaryStatsResponse response = SalaryStatsResponse.newBuilder()
+                .setMonth(month)
+                .setAverageSalary(48000)
+                .setGender("Mixed")
+                .build();
+
+        responseObserver.onNext(response);
+    }
+
+    responseObserver.onCompleted();
+
+    System.out.println("Streaming salary stats for: " + department);
+}
+    
+    @Override
     public StreamObserver<SalaryRecord> uploadSalaryRecords(StreamObserver<UploadStatus> responseObserver) {
 
     return new StreamObserver<SalaryRecord>() {
