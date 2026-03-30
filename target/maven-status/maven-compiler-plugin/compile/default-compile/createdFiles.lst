@@ -38,6 +38,7 @@ org/sgems/reporting/IncidentRequestOrBuilder.class
 org/sgems/leadership/LeaderData$1.class
 org/sgems/reporting/DiscriminationReportingServiceGrpc$DiscriminationReportingServiceBlockingStub.class
 org/sgems/salary/SalaryRecordOrBuilder.class
+org/sgems/client/ClientGUI$1.class
 org/sgems/salary/PayGapResponse$1.class
 org/sgems/leadership/LeadershipRepresentationServiceGrpc$1.class
 org/sgems/reporting/IncidentUpdate$1.class
@@ -106,10 +107,12 @@ org/sgems/salary/PayGapResponse$Builder.class
 org/sgems/salary/SalaryMonitoringServiceGrpc$1.class
 org/sgems/reporting/IncidentRequest$1.class
 org/sgems/reporting/IncidentUpdateRequest.class
+org/sgems/naming/ServiceRegistry.class
 org/sgems/reporting/LiveMessageOrBuilder.class
 org/sgems/leadership/LeadershipRepresentationProto.class
 org/sgems/salary/SalaryMonitoringServiceGrpc$SalaryMonitoringServiceBlockingStub.class
 org/sgems/leadership/RepresentationChange$1.class
+org/sgems/client/ClientGUI.class
 org/sgems/leadership/RepresentationResponse$1.class
 org/sgems/reporting/ReportingServer.class
 org/sgems/salary/SalaryMonitoringServiceGrpc$SalaryMonitoringServiceBaseDescriptorSupplier.class

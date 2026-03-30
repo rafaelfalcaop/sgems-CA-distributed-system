@@ -1,6 +1,8 @@
+/Users/rafaelfalcao/Documents/NCI/2SEMESTER/Distributed Systems (HDCSDEV_INT)/CA/sgems-CA-distributed-system/src/main/java/org/sgems/client/ClientGUI.java
 /Users/rafaelfalcao/Documents/NCI/2SEMESTER/Distributed Systems (HDCSDEV_INT)/CA/sgems-CA-distributed-system/src/main/java/org/sgems/leadership/LeadershipRepresentationServiceImpl.java
 /Users/rafaelfalcao/Documents/NCI/2SEMESTER/Distributed Systems (HDCSDEV_INT)/CA/sgems-CA-distributed-system/src/main/java/org/sgems/leadership/LeadershipServer.java
 /Users/rafaelfalcao/Documents/NCI/2SEMESTER/Distributed Systems (HDCSDEV_INT)/CA/sgems-CA-distributed-system/src/main/java/org/sgems/naming/NamingServer.java
+/Users/rafaelfalcao/Documents/NCI/2SEMESTER/Distributed Systems (HDCSDEV_INT)/CA/sgems-CA-distributed-system/src/main/java/org/sgems/naming/ServiceRegistry.java
 /Users/rafaelfalcao/Documents/NCI/2SEMESTER/Distributed Systems (HDCSDEV_INT)/CA/sgems-CA-distributed-system/src/main/java/org/sgems/reporting/DiscriminationReportingServiceImpl.java
 /Users/rafaelfalcao/Documents/NCI/2SEMESTER/Distributed Systems (HDCSDEV_INT)/CA/sgems-CA-distributed-system/src/main/java/org/sgems/reporting/ReportingServer.java
 /Users/rafaelfalcao/Documents/NCI/2SEMESTER/Distributed Systems (HDCSDEV_INT)/CA/sgems-CA-distributed-system/src/main/java/org/sgems/salary/SalaryServer.java
