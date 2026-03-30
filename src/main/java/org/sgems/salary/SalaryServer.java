@@ -2,6 +2,7 @@ package org.sgems.salary;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import org.sgems.naming.ServiceRegistry;
 
 public class SalaryServer {
 
@@ -13,6 +14,8 @@ public class SalaryServer {
                     .build();
 
             server.start();
+            
+            ServiceRegistry.register("SalaryService", "localhost:50051");
 
             System.out.println("SalaryMonitoringService running on port 50051...");
 

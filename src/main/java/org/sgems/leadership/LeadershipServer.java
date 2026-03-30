@@ -2,6 +2,7 @@ package org.sgems.leadership;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import org.sgems.naming.ServiceRegistry;
 
 public class LeadershipServer {
 
@@ -13,6 +14,8 @@ public class LeadershipServer {
                     .build();
 
             server.start();
+            
+            ServiceRegistry.register("LeadershipService", "localhost:50053");
 
             System.out.println("LeadershipRepresentationService running on port 50053...");
 
